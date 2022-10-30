@@ -1,7 +1,9 @@
+// import * as firebase from "firebase";
 import { initializeApp } from "firebase/app";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 
 // Optionally import the services that you want to use
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+// import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 // import {...} from "firebase/database";
 //import {...} from "firebase/firestore";
 //import {...} from "firebase/functions";
@@ -19,31 +21,12 @@ const firebaseConfig = {
   measurementId: "G-B39NS7F2W5",
 };
 
-const app = initializeApp(firebaseConfig);
 // For more information on how to access Firebase in your project,
 // see the Firebase documentation: https://firebase.google.com/docs/web/setup#access-firebase
 
+const app = initializeApp(firebaseConfig);
+
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(app);
-createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
-  });
 
-signInWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
+export { auth };

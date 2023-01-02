@@ -13,35 +13,22 @@ import AppTextInput from "../components/AppTextInput";
 
 import Screen from "../components/Screen";
 
-function Login(props) {
+function Register(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const navigation = useNavigation();
 
-  const auth = getAuth();
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        console.log(user.email);
-        console.log(user.uid);
-        //navigation.navigate("HomeScreen");
-      }
-    });
-    return unsubscribe;
-  }, []);
-
-  const handleLogin = () => {
-    signInWithEmailAndPassword(auth, email, password)
+  const handleSignUp = () => {
+    createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
+        // Signed up
         const user = userCredential.user;
-        console.log("Login in with: ", user.email);
-        // go to Home screen
-        // if (user) {
-        //   navigation.navigate("HomeScreen");
-        // }
+        console.log("Register with: ", user.email);
+        //go to welcome screen
+        if (user) {
+          navigation.replace("WelcomeScreen");
+        }
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -76,12 +63,12 @@ function Login(props) {
         secureTextEntry
         textContentType="password"
       />
-      <AppButton title="Login" onPress={handleLogin} />
+      <AppButton title="Register" onPress={handleSignUp} />
     </Screen>
   );
 }
 
-export default Login;
+export default Register;
 
 const styles = StyleSheet.create({
   container: {

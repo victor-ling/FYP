@@ -29,9 +29,9 @@ function AccountScreen(props) {
     <Screen style={styles.screen}>
       <View style={styles.container}>
         <ListItem
-          title="Mosh Hamedani"
-          subTitle="programmingwithmosh@gmail.com"
-          image={require("../assets/mosh.jpg")}
+          title="Victor Ling"
+          subTitle="victor@gmail.com"
+          //image={require("../assets/mosh.jpg")}
         />
       </View>
       <View style={styles.container}>
